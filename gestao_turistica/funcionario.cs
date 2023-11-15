@@ -34,7 +34,7 @@ namespace classe_funcionario
             get { return salario; }
             set { salario = value; }
         }
-        public DateTime Checkout_data
+        public DateTime Data_Contrato
         {
             get { return data_contrato; }
             set { data_contrato = value; }
@@ -42,6 +42,37 @@ namespace classe_funcionario
         #endregion
 
         #region metodos
+        public void AlterarDados(int novoCod, string novoNome, int novoNTelemovel, string novoEmail, int novoNif, string novaNacionalidade, string novoCargo, double novoSalario, DateTime novaDataContrato)
+        {
+            // Chama o método da classe base para alterar os dados da pessoa
+            this.Cod = novoCod;
+            this.Nome = novoNome;
+            this.N_Telemovel = novoNTelemovel;
+            this.Email = novoEmail;
+            this.Nif = novoNif;
+            this.Nacionalidade = novaNacionalidade;
+          
+            // Agora altera os dados específicos do Funcionario
+            this.Cargo = novoCargo;
+            this.Salario = novoSalario;
+            this.Data_Contrato = novaDataContrato;
+        }
+
+        public static void RemoverFuncionarioPorCodigo(List<Funcionario> listaFuncionarios, int codigoFuncionario)
+        {
+            Funcionario funcionarioRemover = listaFuncionarios.Find(f => f.Cod == codigoFuncionario);
+
+            if (funcionarioRemover != null)
+            {
+                listaFuncionarios.Remove(funcionarioRemover);
+                Console.WriteLine($"Funcionário com código {codigoFuncionario} removido com sucesso.");
+            }
+            else
+            {
+                Console.WriteLine($"Funcionário com código {codigoFuncionario} não encontrado.");
+            }
+        }
+
         #endregion
     }
 }

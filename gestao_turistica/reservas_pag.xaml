@@ -1,0 +1,14 @@
+﻿<Window x:Class="gestao_turistica.reservas_pag"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:gestao_turistica"
+        mc:Ignorable="d"
+        Title="reservas_pag" Height="450" Width="800">
+    <Grid>
+        <DataGrid x:Name="reserva_datagrid" AutoGenerateColumns="True" Margin="0,0,394,0">
+        </DataGrid>
+        <Button x:Name="voltar_bt" Content="Voltar" HorizontalAlignment="Left" Margin="556,385,0,0" VerticalAlignment="Top" Height="39" Width="94" Click="voltar_bt_Click"/>
+    </Grid>
+</Window>

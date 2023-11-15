@@ -7,7 +7,10 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Button x:Name="comeca_cadastro_pessoa" Content="Começar" HorizontalAlignment="Left" Margin="73,117,0,0" VerticalAlignment="Top" Height="44" Width="142" Click="comeca_cadastro_pessoa_Click"/>
+        <Button x:Name="comeca_cadastro_pessoa" Content="Clientes" HorizontalAlignment="Left" Margin="203,161,0,0" VerticalAlignment="Top" Height="44" Width="142" Click="comeca_cadastro_pessoa_Click"/>
+        <Button x:Name="reserva_bt" Content="Reservas" HorizontalAlignment="Left" Margin="438,161,0,0" VerticalAlignment="Top" Height="44" Width="146" Click="reserva_bt_Click"/>
+        <Button x:Name="funcionario_bt" Content="Funcionarios" HorizontalAlignment="Left" Margin="203,236,0,0" VerticalAlignment="Top" Height="44" Width="142" Click="comeca_cadastro_pessoa_Click"/>
+        <Button x:Name="quarto_bt" Content="Quartos" HorizontalAlignment="Left" Margin="438,236,0,0" VerticalAlignment="Top" Height="44" Width="146" Click="quarto_bt_Click"/>
 
     </Grid>
 </Window>

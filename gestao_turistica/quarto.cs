@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using classe_reserva;
 
 namespace classe_quarto
 {
@@ -49,7 +50,30 @@ namespace classe_quarto
         #endregion
 
         #region metodos
+        public void Alterar_info(int novoNQuarto, string novoTipo, string novoStatus, double novoPrecoDiario)
+        {
+            // Aqui, você pode definir novos valores para os atributos
+            N_quarto = novoNQuarto;
+            Tipo = novoTipo;
+            Status = novoStatus;
+            Preco_diario = novoPrecoDiario;
+        }
 
+        public void elimina_quarto(int n_quarto, List<Quarto> lista)
+        {
+            Quarto quartoParaExcluir = lista.Find(q => q.N_quarto == n_quarto);
+
+            if (quartoParaExcluir != null)
+            {
+                // Remover o quarto da lista
+                lista.Remove(quartoParaExcluir);
+                Console.WriteLine($"Quarto {this.N_quarto} removido com sucesso.");
+            }
+            else
+            {
+                Console.WriteLine($"Quarto {this.N_quarto} não encontrado.");
+            }
+        }
         #endregion
     }
 }

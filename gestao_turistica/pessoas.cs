@@ -4,7 +4,9 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Navigation;
+
 
 namespace classe_pessoa
 {
@@ -69,7 +71,53 @@ namespace classe_pessoa
         #endregion
 
         #region metodos
+        public static int ObterMaiorCodigoPessoa(List<Pessoa> lista)
+        {
+            int maiorCodigo;
+            try
+            {
+                maiorCodigo = lista.Max(pessoa => pessoa.Cod);
+            }
+            catch{maiorCodigo = 0;}
+            
+            return maiorCodigo;
+        }
 
+        public static void RemoverPessoaPorCodigo(int codigo, List<Pessoa> lista)
+        {
+            // Encontre a pessoa na lista com base no código
+            Pessoa pessoaParaRemover = lista.FirstOrDefault(pessoa => pessoa.Cod == codigo);
+
+            // Se a pessoa foi encontrada, remova-a da lista
+            if (pessoaParaRemover != null)
+            {
+                lista.Remove(pessoaParaRemover);
+            }
+            else
+            {
+                MessageBox.Show("Cliente não encontrada com o código especificado.");
+            }
+        }
+
+        private void AtualizarPessoaPorCodigo(int codigo, string novoNome, int novoTelefone, string novoEmail, int novoNIF, string novaNacionalidade, List<Pessoa> lista)
+        {
+            // Encontre a pessoa na lista com base no código
+            Pessoa pessoaParaAtualizar = lista.FirstOrDefault(pessoa => pessoa.Cod == codigo);
+
+            // Se a pessoa foi encontrada, atualize suas propriedades
+            if (pessoaParaAtualizar != null)
+            {
+                pessoaParaAtualizar.Nome = novoNome;
+                pessoaParaAtualizar.N_Telemovel = novoTelefone;
+                pessoaParaAtualizar.Email = novoEmail;
+                pessoaParaAtualizar.Nif = novoNIF;
+                pessoaParaAtualizar.Nacionalidade = novaNacionalidade;
+            }
+            else
+            {
+                MessageBox.Show("Cliente não encontrada com o código especificado.");
+            }
+        }
         #endregion
     }
 }

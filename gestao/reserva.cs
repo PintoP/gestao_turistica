@@ -1,12 +1,10 @@
-﻿using classe_quarto;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Markup;
 
-namespace classe_reserva
+namespace gestao
 {
     public class Reserva
     {
@@ -53,29 +51,29 @@ namespace classe_reserva
 
         public static int nDiasreserva(int codReserva, List<Reserva> listaReservas)
         {
-            Reserva reserva = listaReservas.Find(r => r.cod_reserva== codReserva);
+            Reserva reserva = listaReservas.Find(r => r.cod_reserva == codReserva);
 
-                DateTime dataCheckin = reserva.Checkin;
-                DateTime dataCheckout = reserva.Checkout;
+            DateTime dataCheckin = reserva.Checkin;
+            DateTime dataCheckout = reserva.Checkout;
 
-                TimeSpan diferenca = dataCheckout - dataCheckin;
+            TimeSpan diferenca = dataCheckout - dataCheckin;
 
-                return Math.Abs((int)diferenca.TotalDays);
-            
+            return Math.Abs((int)diferenca.TotalDays);
+
         }
         public static double valor_total(int codReserva, List<Reserva> listaReservas, List<Quarto> listaQuartos)
         {
             Reserva reserva = listaReservas.Find(r => r.cod_reserva == codReserva);
 
-                int numeroDias = nDiasreserva(codReserva, listaReservas);
+            int numeroDias = nDiasreserva(codReserva, listaReservas);
 
-                // Encontrar o preço diário do quarto associado à reserva
-                double precoDiario = listaQuartos.Find(q => q.N_quarto == reserva.n_quarto).Preco_diario;
+            // Encontrar o preço diário do quarto associado à reserva
+            double precoDiario = listaQuartos.Find(q => q.N_quarto == reserva.n_quarto).Preco_diario;
 
-                // Calcular o valor total a pagar
-                double valorTotal = numeroDias * precoDiario;
+            // Calcular o valor total a pagar
+            double valorTotal = numeroDias * precoDiario;
 
-                return valorTotal;
+            return valorTotal;
         }
 
         public void confirma_checkout(int codReserva, List<Reserva> listaReservas)
@@ -95,3 +93,5 @@ namespace classe_reserva
         #endregion
     }
 }
+
+

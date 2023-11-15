@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using classe_pessoa;
 
-namespace classe_funcionario
+namespace Entidades
 {
     public class Funcionario : Pessoa
     {
@@ -51,7 +50,7 @@ namespace classe_funcionario
             this.Email = novoEmail;
             this.Nif = novoNif;
             this.Nacionalidade = novaNacionalidade;
-          
+
             // Agora altera os dados específicos do Funcionario
             this.Cargo = novoCargo;
             this.Salario = novoSalario;

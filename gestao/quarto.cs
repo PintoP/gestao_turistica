@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using classe_reserva;
 
-namespace classe_quarto
+namespace gestao
 {
     public class Quarto
     {
@@ -17,7 +16,7 @@ namespace classe_quarto
         #endregion
 
         #region contrutor
-        public Quarto(int n_quarto, string tipo,string status,double preco_diario)
+        public Quarto(int n_quarto, string tipo, string status, double preco_diario)
         {
             this.n_quarto = n_quarto;
             this.tipo = tipo;

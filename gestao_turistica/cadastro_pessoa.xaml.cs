@@ -13,8 +13,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using classe_hospede;
-using classe_pessoa;
+using Entidades;
+using gestao;
 
 namespace gestao_turistica
 {

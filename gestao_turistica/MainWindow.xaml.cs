@@ -12,11 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using classe_pessoa;
-using classe_hospede;
-using classe_funcionario;
-using classe_quarto;
-using classe_reserva;
+using Entidades;
+using gestao;
 using System.Net.Security;
 
 namespace gestao_turistica

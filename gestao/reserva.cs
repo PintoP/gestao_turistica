@@ -1,12 +1,11 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 namespace gestao
 {
-    [Serializable]
     public class Reserva
     {
         #region atributos
@@ -14,7 +13,7 @@ namespace gestao
         private DateTime checkin;
         private DateTime checkout;
         private int n_quarto;
-        [NonSerialized] private double preco_total;
+        private int preco_total;
         #endregion
 
         #region contrutor
@@ -49,74 +48,46 @@ namespace gestao
         }
         #endregion
         #region metodos
-    //função para saber o nº de dias que uma reserva tem
-        public static int nDiasreserva(int codReserva, ArrayList listaReservas)
+
+        public static int nDiasreserva(int codReserva, List<Reserva> listaReservas)
         {
-            Reserva reservaEncontrada = null;
+            Reserva reserva = listaReservas.Find(r => r.cod_reserva == codReserva);
 
-            foreach (var item in listaReservas)
-            {
-                if (((Reserva)item).cod_reserva == codReserva)
-                {
-                    reservaEncontrada = (Reserva)item;
-                    break;
-                }
-            }
+            DateTime dataCheckin = reserva.Checkin;
+            DateTime dataCheckout = reserva.Checkout;
 
-            if (reservaEncontrada != null)
-            {
-                DateTime dataCheckin = reservaEncontrada.Checkin;
-                DateTime dataCheckout = reservaEncontrada.Checkout;
+            TimeSpan diferenca = dataCheckout - dataCheckin;
 
-                TimeSpan diferenca = dataCheckout - dataCheckin;
+            return Math.Abs((int)diferenca.TotalDays);
 
-                return Math.Abs((int)diferenca.TotalDays);
-            }
-            else
-            {
-                // Se a reserva não for encontrada, retorna um valor padrão ou lançar uma exceção, dependendo do seu caso.
-                throw new ArgumentException($"A reserva com o código {codReserva} não foi encontrada na lista.");
-            }
+        }
+        public static double valor_total(int codReserva, List<Reserva> listaReservas, List<Quarto> listaQuartos)
+        {
+            Reserva reserva = listaReservas.Find(r => r.cod_reserva == codReserva);
+
+            int numeroDias = nDiasreserva(codReserva, listaReservas);
+
+            // Encontrar o preço diário do quarto associado à reserva
+            double precoDiario = listaQuartos.Find(q => q.N_quarto == reserva.n_quarto).Preco_diario;
+
+            // Calcular o valor total a pagar
+            double valorTotal = numeroDias * precoDiario;
+
+            return valorTotal;
         }
 
-        public static double valor_total(int codReserva, ArrayList listaReservas, ArrayList listaQuartos)
+        public void confirma_checkout(int codReserva, List<Reserva> listaReservas)
         {
-            Reserva reserva = null;
+            Reserva reserva_Remove = listaReservas.Find(r => r.cod_reserva == codReserva);
 
-            foreach (var item in listaReservas)
+            if (reserva_Remove != null)
             {
-                if (((Reserva)item).cod_reserva == codReserva)
-                {
-                    reserva = (Reserva)item;
-                    break;
-                }
-            }
-
-            if (reserva != null)
-            {
-                int numeroDias = nDiasreserva(codReserva, listaReservas);
-
-                // Encontrar o preço diário do quarto associado à reserva
-                double precoDiario = 0;
-
-                foreach (var quarto in listaQuartos)
-                {
-                    if (((Quarto)quarto).N_quarto == reserva.n_quarto)
-                    {
-                        precoDiario = ((Quarto)quarto).Preco_diario;
-                        break;
-                    }
-                }
-
-                // Calcular o valor total a pagar
-                double valorTotal = numeroDias * precoDiario;
-
-                return valorTotal;
+                listaReservas.Remove(reserva_Remove);
+                Console.WriteLine($"Reserva com código {codReserva} removida com sucesso.");
             }
             else
             {
-                // Se a reserva não for encontrada, você pode retornar um valor padrão ou lançar uma exceção, dependendo do seu caso.
-                throw new ArgumentException($"A reserva com o código {codReserva} não foi encontrada na lista.");
+                Console.WriteLine($"Reserva com código {codReserva} não encontrada.");
             }
         }
         #endregion

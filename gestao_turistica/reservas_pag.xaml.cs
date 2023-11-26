@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,7 +26,7 @@ namespace gestao_turistica
         {
             InitializeComponent();
         }
-        public reservas_pag(List<Reserva> lista)
+        public reservas_pag(ArrayList lista)
         {
             InitializeComponent();
             reserva_datagrid.ItemsSource = lista;

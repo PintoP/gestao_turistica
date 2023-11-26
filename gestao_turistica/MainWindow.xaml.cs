@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using Entidades;
 using gestao;
 using System.Net.Security;
+using System.Collections;
 
 namespace gestao_turistica
 {
@@ -29,7 +30,7 @@ namespace gestao_turistica
 
         List<Quarto> lista_quartos = new List<Quarto>();
 
-        List<Reserva> lista_reservas = new List<Reserva>();
+        ArrayList lista_reservas = new ArrayList();
 
         //construtores-----------------------------------
         public MainWindow()//construtor inicial
@@ -58,7 +59,7 @@ namespace gestao_turistica
         }
 
 
-        //açoes dos butões--------------------------------
+        //açoes butões--------------------------------
         private void comeca_cadastro_pessoa_Click(object sender, RoutedEventArgs e)
         {
             cadastro_pessoa pagina = new cadastro_pessoa(lista_clientes);

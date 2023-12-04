@@ -1,8 +1,11 @@
-ï»¿using System;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
 
 namespace gestao
 {
@@ -14,6 +17,7 @@ namespace gestao
         private DateTime checkout;
         private int n_quarto;
         private int preco_total;
+        int estado;//1-concluida 2-a ocurrer/por ocurrer
         #endregion
 
         #region contrutor
@@ -23,6 +27,7 @@ namespace gestao
             this.checkin = checkin;
             this.checkout = checkout;
             this.n_quarto = n_quarto;
+            this.estado = 2;
         }
         #endregion
         #region propriedades
@@ -46,12 +51,31 @@ namespace gestao
             get { return n_quarto; }
             set { n_quarto = value; }
         }
+        public int Estado
+        {
+            get { return estado; }
+            set { estado = value; }
+        }
         #endregion
         #region metodos
-
-        public static int nDiasreserva(int codReserva, List<Reserva> listaReservas)
+        public static int nDiasreserva(int codReserva, ArrayList listaReservas)
         {
-            Reserva reserva = listaReservas.Find(r => r.cod_reserva == codReserva);
+            Reserva reserva = null;
+
+            foreach (Reserva r in listaReservas)
+            {
+                if (r.cod_reserva == codReserva)
+                {
+                    reserva = r;
+                    break;
+                }
+            }
+
+            if (reserva == null)
+            {
+                // Tratar a situação em que a reserva não foi encontrada
+                return -1;
+            }
 
             DateTime dataCheckin = reserva.Checkin;
             DateTime dataCheckout = reserva.Checkout;
@@ -59,39 +83,53 @@ namespace gestao
             TimeSpan diferenca = dataCheckout - dataCheckin;
 
             return Math.Abs((int)diferenca.TotalDays);
-
         }
-        public static double valor_total(int codReserva, List<Reserva> listaReservas, List<Quarto> listaQuartos)
+
+        public static double valor_total(int codReserva, ArrayList listaReservas, ArrayList listaQuartos)
         {
-            Reserva reserva = listaReservas.Find(r => r.cod_reserva == codReserva);
+            Reserva reserva = null;
+
+            foreach (Reserva r in listaReservas)
+            {
+                if (r.cod_reserva == codReserva)
+                {
+                    reserva = r;
+                    break;
+                }
+            }
+
+            if (reserva == null)
+            {
+                // Tratar a situação em que a reserva não foi encontrada
+                return -1;
+            }
 
             int numeroDias = nDiasreserva(codReserva, listaReservas);
 
-            // Encontrar o preÃ§o diÃ¡rio do quarto associado Ã  reserva
-            double precoDiario = listaQuartos.Find(q => q.N_quarto == reserva.n_quarto).Preco_diario;
+            // Encontrar o preço diário do quarto associado à reserva
+            Quarto quarto = null;
+
+            foreach (Quarto q in listaQuartos)
+            {
+                if (q.N_quarto == reserva.n_quarto)
+                {
+                    quarto = q;
+                    break;
+                }
+            }
+
+            if (quarto == null)
+            {
+                // Tratar a situação em que o quarto não foi encontrado
+                return -1;
+            }
 
             // Calcular o valor total a pagar
+            double precoDiario = quarto.Preco_diario;
             double valorTotal = numeroDias * precoDiario;
 
             return valorTotal;
         }
-
-        public void confirma_checkout(int codReserva, List<Reserva> listaReservas)
-        {
-            Reserva reserva_Remove = listaReservas.Find(r => r.cod_reserva == codReserva);
-
-            if (reserva_Remove != null)
-            {
-                listaReservas.Remove(reserva_Remove);
-                Console.WriteLine($"Reserva com cÃ³digo {codReserva} removida com sucesso.");
-            }
-            else
-            {
-                Console.WriteLine($"Reserva com cÃ³digo {codReserva} nÃ£o encontrada.");
-            }
-        }
         #endregion
     }
 }
-
-

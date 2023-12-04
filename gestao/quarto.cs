@@ -11,12 +11,12 @@ namespace gestao
         #region atributos
         private int n_quarto;
         private string tipo;
-        private string status;
+        private int status;//1-disponivel 2-indisponivel
         private double preco_diario;
         #endregion
 
         #region contrutor
-        public Quarto(int n_quarto, string tipo, string status, double preco_diario)
+        public Quarto(int n_quarto, string tipo, int status, double preco_diario)
         {
             this.n_quarto = n_quarto;
             this.tipo = tipo;

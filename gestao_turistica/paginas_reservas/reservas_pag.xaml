@@ -7,8 +7,10 @@
         mc:Ignorable="d"
         Title="reservas_pag" Height="450" Width="800">
     <Grid>
-        <DataGrid x:Name="reserva_datagrid" AutoGenerateColumns="True" Margin="0,0,394,0">
+        <DataGrid x:Name="reserva_datagrid" Margin="0,0,394,0">
         </DataGrid>
         <Button x:Name="voltar_bt" Content="Voltar" HorizontalAlignment="Left" Margin="556,385,0,0" VerticalAlignment="Top" Height="39" Width="94" Click="voltar_bt_Click"/>
+        <Button x:Name="check_out_bt" Content="Efetuar check Out" HorizontalAlignment="Left" Margin="447,318,0,0" VerticalAlignment="Top" Height="39" Width="94" Click="check_out_bt_Click"/>
+        <Button x:Name="check_in_bt" Content="Efetuar check in" HorizontalAlignment="Left" Margin="591,318,0,0" VerticalAlignment="Top" Height="39" Click="check_in_bt_Click"/>
     </Grid>
 </Window>

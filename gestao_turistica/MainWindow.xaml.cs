@@ -12,9 +12,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Net.Security;
+using System.Collections;
 using Entidades;
 using gestao;
-using System.Net.Security;
 
 namespace gestao_turistica
 {
@@ -29,7 +30,8 @@ namespace gestao_turistica
 
         List<Quarto> lista_quartos = new List<Quarto>();
 
-        List<Reserva> lista_reservas = new List<Reserva>();
+        Reservas lista_reservas = new Reservas();
+        
 
         //construtores-----------------------------------
         public MainWindow()//construtor inicial
@@ -42,12 +44,12 @@ namespace gestao_turistica
             lista_funcionarios.Add(new Funcionario(2,"Maria",912343333,"maria@gmail.com",123456, "Portugues", "Limpeza",880.40, new DateTime(2023, 1, 1)));
             lista_funcionarios.Add(new Funcionario(3,"Ana",914223423,"ana@gmail.com",665432,"Portugues","Cozinha",950.60, new DateTime(2023, 1, 1)));
 
-            lista_quartos.Add(new Quarto(101, "Suite", "Ocupado", 150.0));
-            lista_quartos.Add(new Quarto(102, "Suite", "Ocupado", 190.67));
-            lista_quartos.Add(new Quarto(103, "Suite", "Disponivel", 260.5));
-            
-            lista_reservas.Add(new Reserva(1, DateTime.Now, DateTime.Now.AddDays(5), 101));
-            lista_reservas.Add(new Reserva(2, DateTime.Now, DateTime.Now.AddDays(7), 102));
+            lista_quartos.Add(new Quarto(101, "Suite", 2, 150.0));
+            lista_quartos.Add(new Quarto(102, "Suite", 2, 190.67));
+            lista_quartos.Add(new Quarto(103, "Suite", 1, 260.5));
+
+            lista_reservas.Reservas_lista.Add(new Reserva(1, DateTime.Now, DateTime.Now.AddDays(5), 101));
+            lista_reservas.Reservas_lista.Add(new Reserva(2, DateTime.Now.AddDays(4), DateTime.Now.AddDays(12), 102));
 
 
         }

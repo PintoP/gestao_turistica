@@ -11,31 +11,24 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using Entidades;
-using gestao;
 
-namespace gestao_turistica
+namespace gestao_turistica.paginas_reservas
 {
     /// <summary>
-    /// Lógica interna para reservas_pag.xaml
+    /// Lógica interna para check_in.xaml
     /// </summary>
-    public partial class reservas_pag : Window
+    public partial class check_in : Window
     {
-        public reservas_pag()
+        public check_in()
         {
             InitializeComponent();
-        }
-        public reservas_pag(List<Reserva> lista)
-        {
-            InitializeComponent();
-            reserva_datagrid.ItemsSource = lista;
         }
 
-        private void voltar_bt_Click(object sender, RoutedEventArgs e)
+        private void add_bt_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow pagina = new MainWindow();
-            pagina.Show();
+            //checkin_dp checkout_dp quartos
             this.Close();
+
         }
     }
 }

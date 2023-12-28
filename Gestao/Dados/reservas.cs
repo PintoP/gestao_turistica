@@ -1,5 +1,4 @@
-﻿using gestao;
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -11,22 +10,27 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
 
-namespace gestao
+//externas
+using Gestao.Objetos;
+using Gestao.Excecoes;
+
+namespace Gestao.Dados
 {
     public class Reservas
     {
         #region atributos
-        private ArrayList reservas;
+        private List<Reserva> reservas;
         #endregion
 
         #region contrutor
         public Reservas()
         {
-            reservas= new ArrayList();
+            reservas = new List<Reserva>();
         }
         #endregion
+
         #region propriedades
-        public ArrayList Reservas_lista
+        public List<Reserva> Reservas_lista
         {
             get { return reservas; }
             set { reservas = value; }
@@ -48,12 +52,12 @@ namespace gestao
             Stream s = File.Open(fn, FileMode.Open);
             //testar se ficheiro...
             BinaryFormatter b = new BinaryFormatter();
-            reservas = (ArrayList)b.Deserialize(s);
+            reservas = (List<Reserva>)b.Deserialize(s);
             s.Close();
             return true;
         }
 
-        public bool mostra_reservas(DataGrid dg, ArrayList r)
+        public bool mostra_reservas(DataGrid dg, List<Reserva> r)
         {
             dg.AutoGenerateColumns = true;
             dg.ItemsSource = r;
@@ -106,10 +110,11 @@ namespace gestao
                 return null;
             }
         }
-        public ArrayList AdicionaReserva(ArrayList reservas,DateTime datein,DateTime dateout,int p)
+
+        public bool AdicionaReservaBD(Reserva r)
         {
-            reservas.Add(new Reserva(1, DateTime.Now, DateTime.Now.AddDays(5), 101));
-            return null;
+            reservas.Add(r);
+            return true;
         }
 
         #endregion

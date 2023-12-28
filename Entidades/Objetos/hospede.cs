@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Entidades
+namespace Entidades.Objetos
 {
     public class Hospede : Pessoa
     {
@@ -44,11 +44,11 @@ namespace Entidades
         }
         public void Atualiza_info(string nome, int n_telemovel, string email, int nif, string nacionalidade)
         {
-            this.Nome = nome;
-            this.Email = email;
-            this.Nif = nif;
-            this.Nacionalidade = nacionalidade;
-            this.N_Telemovel = n_telemovel;
+            Nome = nome;
+            Email = email;
+            Nif = nif;
+            Nacionalidade = nacionalidade;
+            N_Telemovel = n_telemovel;
 
         }
 

@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace gestao
+namespace Gestao.Objetos
 {
+    [Serializable]
     public class Reserva
     {
         #region atributos
@@ -16,7 +17,7 @@ namespace gestao
         private DateTime checkin;
         private DateTime checkout;
         private int n_quarto;
-        private int preco_total;
+        [NonSerialized] private int preco_total;
         int estado;//1-concluida 2-a ocurrer/por ocurrer
         #endregion
 
@@ -27,7 +28,8 @@ namespace gestao
             this.checkin = checkin;
             this.checkout = checkout;
             this.n_quarto = n_quarto;
-            this.estado = 2;
+            estado = 2;
+            preco_total = 0;
         }
         #endregion
         #region propriedades

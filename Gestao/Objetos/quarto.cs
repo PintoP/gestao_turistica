@@ -4,8 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace gestao
+namespace Gestao.Objetos
 {
+    [Serializable]
     public class Quarto
     {
         #region atributos
@@ -36,7 +37,7 @@ namespace gestao
             get { return tipo; }
             set { tipo = value; }
         }
-        public string Status
+        public int Status
         {
             get { return status; }
             set { status = value; }
@@ -49,30 +50,6 @@ namespace gestao
         #endregion
 
         #region metodos
-        public void Alterar_info(int novoNQuarto, string novoTipo, string novoStatus, double novoPrecoDiario)
-        {
-            // Aqui, você pode definir novos valores para os atributos
-            N_quarto = novoNQuarto;
-            Tipo = novoTipo;
-            Status = novoStatus;
-            Preco_diario = novoPrecoDiario;
-        }
-
-        public void elimina_quarto(int n_quarto, List<Quarto> lista)
-        {
-            Quarto quartoParaExcluir = lista.Find(q => q.N_quarto == n_quarto);
-
-            if (quartoParaExcluir != null)
-            {
-                // Remover o quarto da lista
-                lista.Remove(quartoParaExcluir);
-                Console.WriteLine($"Quarto {this.N_quarto} removido com sucesso.");
-            }
-            else
-            {
-                Console.WriteLine($"Quarto {this.N_quarto} não encontrado.");
-            }
-        }
         #endregion
     }
 }

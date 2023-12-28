@@ -13,7 +13,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Entidades;
-using gestao;
+using Gestao.Dados;
+using Gestao.Objetos;
+using Gestao.Regras;
 
 namespace gestao_turistica
 {
@@ -31,7 +33,14 @@ namespace gestao_turistica
         {
             InitializeComponent();
             reservas = lista;
-            lista.mostra_reservas(reserva_datagrid,lista.Reservas_lista);
+            try
+            {
+                reservas.mostra_reservas(reserva_datagrid, lista.Reservas_lista);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Erro ao exibir reservas: {ex.Message}", "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void voltar_bt_Click(object sender, RoutedEventArgs e)

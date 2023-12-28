@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Gestao.Objetos;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,10 @@ namespace gestao_turistica.paginas_reservas
         public check_in()
         {
             InitializeComponent();
+           /* foreach (Quarto quarto in listaQuartos)
+            {
+                minhaComboBox.Items.Add(quarto.N_quarto);
+            }*/
         }
 
         private void add_bt_Click(object sender, RoutedEventArgs e)

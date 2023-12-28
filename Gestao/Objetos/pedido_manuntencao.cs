@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace gestao
+namespace Gestao.Objetos
 {
     public class Pedido_manuntencao
     {

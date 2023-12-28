@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Entidades
+namespace Entidades.Objetos
 {
     public class Funcionario : Pessoa
     {
@@ -44,17 +44,17 @@ namespace Entidades
         public void AlterarDados(int novoCod, string novoNome, int novoNTelemovel, string novoEmail, int novoNif, string novaNacionalidade, string novoCargo, double novoSalario, DateTime novaDataContrato)
         {
             // Chama o método da classe base para alterar os dados da pessoa
-            this.Cod = novoCod;
-            this.Nome = novoNome;
-            this.N_Telemovel = novoNTelemovel;
-            this.Email = novoEmail;
-            this.Nif = novoNif;
-            this.Nacionalidade = novaNacionalidade;
+            Cod = novoCod;
+            Nome = novoNome;
+            N_Telemovel = novoNTelemovel;
+            Email = novoEmail;
+            Nif = novoNif;
+            Nacionalidade = novaNacionalidade;
 
             // Agora altera os dados específicos do Funcionario
-            this.Cargo = novoCargo;
-            this.Salario = novoSalario;
-            this.Data_Contrato = novaDataContrato;
+            Cargo = novoCargo;
+            Salario = novoSalario;
+            Data_Contrato = novaDataContrato;
         }
 
         public static void RemoverFuncionarioPorCodigo(List<Funcionario> listaFuncionarios, int codigoFuncionario)

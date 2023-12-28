@@ -1,0 +1,20 @@
+﻿<Window x:Class="gestao_turistica.paginas_quartos.adicionar_alterar_quarto"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:gestao_turistica.paginas_quartos"
+        mc:Ignorable="d"
+        Title="adicionar_alterar_quarto" Height="282" Width="220">
+    <Grid>
+        <TextBox x:Name="n_tb" HorizontalAlignment="Center" Margin="0,74,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <ComboBox x:Name="tipo_cb" HorizontalAlignment="Center" Margin="0,120,0,0" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="preco_tb" HorizontalAlignment="Center" Margin="0,167,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="main_bt" Content="Button" HorizontalAlignment="Center" Margin="0,201,0,0" VerticalAlignment="Top" Width="93" Click="main_bt_Click"/>
+        <Label x:Name="titulo_lb" Content="Label" HorizontalAlignment="Center" Margin="0,32,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="n_lb" Content="numero" HorizontalAlignment="Left" Margin="50,49,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="tipo_lb" Content="tipo" HorizontalAlignment="Left" Margin="50,95,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="preco_lb" Content="preço" HorizontalAlignment="Left" Margin="50,142,0,0" VerticalAlignment="Top"/>
+
+    </Grid>
+</Window>
